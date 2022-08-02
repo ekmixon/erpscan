@@ -74,14 +74,14 @@ def f_send_request(payload_o):
 
 def f_run():  # check payloads
     for index, item in enumerate(payloads):
-        f_verbose("[*] Checking {} payload.".format(index + 1))
+        f_verbose(f"[*] Checking {index + 1} payload.")
         result = f_send_request(base64.b64decode(item))
 
         if payload_min_time <= result < timeout:
-            f_verbose("[*] Payload {} successfully executed!".format(index + 1))
+            f_verbose(f"[*] Payload {index + 1} successfully executed!")
             return True
         else:
-            f_verbose("[!] Payload {} is not working!".format(index + 1))
+            f_verbose(f"[!] Payload {index + 1} is not working!")
 
     return False
 

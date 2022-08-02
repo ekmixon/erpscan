@@ -177,7 +177,7 @@ def f_sha_1(c, saltedKeyBytes):
 
     m.update('\x02')
     a = m.digest()
-    retval += bytearray(a[0:12]) # extend to 32 length value
+    retval += bytearray(a[:12])
     return retval
 
 
@@ -316,7 +316,7 @@ def newDecrypt(key, value):
 def decrypt(key, cipherText):
     """Choose kind of decryption."""
 
-    if cipherText[0:2] == 'ZG' or cipherText[0:2] == 'ZH':
+    if cipherText[:2] in ['ZG', 'ZH']:
         return newDecrypt(key, cipherText)
     else:
         return oldDecrypt(key, cipherText)

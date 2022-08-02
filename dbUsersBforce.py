@@ -450,13 +450,15 @@ def f_check():  # check credentials
 
     for item in creds:
         if oracle.connect(item[0], item[1]):
-            f_verbose("[X] status: Found `{} / {}`".format(item[0], item[1]))
+            f_verbose(f"[X] status: Found `{item[0]} / {item[1]}`")
             count += 1
             if 'Y' in args.dec:
                 f_check2(oracle, b_hash)
             oracle.disconnect()
 
-    f_verbose("\n[+] Total found: `{}` DB users with predefined passwords.\n".format(count))
+    f_verbose(
+        f"\n[+] Total found: `{count}` DB users with predefined passwords.\n"
+    )
 
 
 if __name__ == '__main__':
